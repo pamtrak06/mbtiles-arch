@@ -1,0 +1,33 @@
+Exiting... the following required dependencies were not found:
+   - freetype (libfreetype library | try setting FREETYPE_CONFIG SCons option or configure with FREETYPE_LIBS & FREETYPE_INCLUDES)
+   - icuuc (ICU C++ library | configure with ICU_LIBS & ICU_INCLUDES or use ICU_LIB_NAME to specify custom lib name  | more info: http://site.icu-project.org/)
+   - harfbuzz (HarfBuzz text shaping library | configure with HB_LIBS & HB_INCLUDES)
+   - boost development headers (more info see: https://github.com/mapnik/mapnik/wiki/Mapnik-Installation & http://www.boost.org)
+
+See '/mapnik-3.x/config.log' for details on possible problems.
+
+Also, these OPTIONAL dependencies were not found:
+   - pq (libpq library (postgres client) | try setting PG_CONFIG SCons option or configure with PG_LIBS & PG_INCLUDES)
+   - sqlite3 (SQLite3 C Library | configure with SQLITE_LIBS & SQLITE_INCLUDES | more info: https://github.com/mapnik/mapnik/wiki/SQLite)
+   - sqlite_rtree (The SQLite plugin requires libsqlite3 built with RTREE support (-DSQLITE_ENABLE_RTREE=1))
+   - gdal-config (gdal-config program | try setting GDAL_CONFIG SCons option)
+   - pq (libpq library (postgres client) | try setting PG_CONFIG SCons option or configure with PG_LIBS & PG_INCLUDES)
+   - ogr (OGR-enabled GDAL C++ Library | configured using gdal-config program | try setting GDAL_CONFIG SCons option | more info: https://github.com/mapnik/mapnik/wiki/OGR)
+   - pg_config (pg_config program | try setting PG_CONFIG SCons option)
+   - pgsql2sqlite_rtree (The pgsql2sqlite program requires libsqlite3 built with RTREE support (-DSQLITE_ENABLE_RTREE=1))
+   - cairo (Cairo C library | configured using pkg-config | try setting PKG_CONFIG_PATH SCons option)
+
+Set custom paths to these libraries and header files on the command-line or in a file called 'config.py'
+    ie. $ python scons/scons.py BOOST_INCLUDES=/usr/local/include BOOST_LIBS=/usr/local/lib
+
+Once all required dependencies are found a local 'config.py' will be saved and then install:
+    $ sudo python scons/scons.py install
+
+To view available path variables:
+    $ python scons/scons.py --help or -h
+
+To view overall SCons help options:
+    $ python scons/scons.py --help-options or -H
+
+More info: https://github.com/mapnik/mapnik/wiki/Mapnik-Installation
+The command '/bin/sh -c ./configure CUSTOM_CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0"' returned a non-zero code: 1

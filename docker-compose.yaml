@@ -1,0 +1,39 @@
+osm2vector_prod:
+  build: ./osm2vector/build/
+  ports:
+    - "8081:80"
+  expose:
+    - "80"
+  volumes:
+    - ./osm2vector/volumes/data/enabled:/data
+
+mapproxy_prod:
+  build: ./mapproxy/build/
+  ports:
+    - "8082:8080"
+  expose:
+    - "8080"
+  volumes:
+    - ./mapproxy/volumes/config:/mapproxy
+    - ./mapproxy/volumes/data:/data
+
+webserver_prod:
+  build: ./web/build/
+  ports:
+    - "8083:80"
+  expose:
+    - "80"
+  volumes:
+    - ./web/volumes/html:/usr/local/apache2/htdocs
+    - /Users/docker/Documents/docker/toolbox-gis/mbtiles/mapproxy/volumes/data:/usr/local/apache2/htdocs/tiles
+
+proxy_prod:
+  build: ./proxy/build/
+  ports:
+    - "80:80"
+  expose:
+    - "80"
+  links:
+    - osm2vector_prod:osm2vector
+    - mapproxy_prod:mapproxy
+    - webserver_prod:web
